@@ -3,8 +3,7 @@ name: generate ADSCII Artwork
 on: push
 
 jobs: 
-    build_job:
-     needs: test_job
+    build_job:     
      runs-on: ubuntu-latest
      steps:
         - name: checkout repo
@@ -14,8 +13,26 @@ jobs:
             chmod +x script.sh
             sh script.sh
     test_job: 
+      needs: build_job
       runs-on: ubuntu-latest
       steps:
         - name: check the script file
           run: ls
+    upload_artifact:
+        needs: build_job
+        runs-on: ubuntu-latest
+        steps:
+          - name: upload artifact
+            uses: actions/upload-artifact@v3
+            with:
+              name: dragon-text-file
+              path: dragon.txt
+    download_artifact:
+            needs: upload_artifact
+            runs-on: ubuntu-latest
+            steps:
+              - name: download artifact
+                uses: actions/download-artifact@v3
+                with:
+                  name: dragon-text-file
         
