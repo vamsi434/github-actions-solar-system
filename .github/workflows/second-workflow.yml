@@ -8,7 +8,7 @@ jobs:
      steps:
         - name: checkout repo
           uses: actions/checkout@v4
-        - name: download coway package
+        - name: download cowsay package
           run: sudo apt-get install coway -y
         - name: list all files
           run: ls -la
@@ -16,4 +16,3 @@ jobs:
           run:  cowsay -f dragon "run for cover its a dragon" >> dragon.txt
         - name: print dragon.txt
           run: cat dragon.txt
-          
