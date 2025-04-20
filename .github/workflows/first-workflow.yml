@@ -10,6 +10,5 @@ jobs:
           run: |
            echo "List all files"
            ls -ltr
-           cat READEME.md
         - name: use third party library
           run: cowsay -f dragon "run for cover its a dragon" >> dragon.txt
