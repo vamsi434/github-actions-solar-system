@@ -1,14 +1,13 @@
-name: my-first-workflow
-
+name: checkout workflow
 on: push
-
 jobs:
-    first_job: 
-        runs-on: ubuntu-latest
-        steps:
-         - name: my first command
-           run: echo "My first command:"
-         - name: list all files and directories
-           run: ls -la
+    my-first-job:
+     runs-on: ubuntu-latest
+     steps:
+        - name: checkout repo
+          uses: actions/checkout@v4
+        - name: list all files in current directory
+          run: echo "list all files in current directory"
+        - name: linux command
+          run: ls -la
 
-        
