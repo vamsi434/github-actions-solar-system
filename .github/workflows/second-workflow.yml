@@ -6,12 +6,10 @@ jobs:
     build_upload_artifact_job:     
      runs-on: ubuntu-latest
      steps:
-        - name: checkout repo
-          uses: actions/checkout@v4
-        - name: run shell script
-          run: |
-            chmod +x script.sh
-            sh script.sh
+        - name: install conway pacakage
+          run: sudo apt-get install cowsay -y
+        - name: execute shell command
+          run: cowsay -f dragon " run for cover, I am a dragon" >> dragon.txt
         - name: upload artifact
           uses: actions/upload-artifact@v3
           with:
