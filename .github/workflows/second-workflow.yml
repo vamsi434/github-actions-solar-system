@@ -9,7 +9,7 @@ jobs:
         - name: checkout repo
           uses: actions/checkout@v4
         - name: download cowsay package
-          run: sudo apt-get install coway -y
+          run: sudo apt-get install cowsay -y
         - name: list all files
           run: ls -la
         - name: create file
