@@ -3,7 +3,8 @@ name: generate ADSCII Artwork
 on: push
 
 jobs: 
-    ascii-work:
+    build_job:
+     needs: test_job
      runs-on: ubuntu-latest
      steps:
         - name: checkout repo
@@ -12,3 +13,9 @@ jobs:
           run: |
             chmod +x script.sh
             sh script.sh
+    test_job: 
+      runs-on: ubuntu-latest
+      steps:
+        - name: check the script file
+          run: ls
+        
