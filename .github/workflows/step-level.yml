@@ -1,4 +1,4 @@
-name: secrets at job level
+name: workflow dispatch
 on: 
   workflow_dispatch: 
 jobs:
