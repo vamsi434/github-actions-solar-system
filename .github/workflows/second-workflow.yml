@@ -4,7 +4,7 @@ on: push
 
 jobs:
     second-job:
-        runs-on: ubuntu
+        runs-on: ubuntu-latest
         steps:
           - name: my second step
             run: echo "my second step"
