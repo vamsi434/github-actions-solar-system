@@ -11,7 +11,7 @@ jobs:
         - name: execute shell command
           run: cowsay -f dragon " run for cover, I am a dragon" >> dragon.txt
         - name: upload artifact
-          uses: actions/upload-artifact@v3
+          uses: actions/upload-artifact@v4
           with:
               name: dragon-text-file
               path: dragon.txt
@@ -20,7 +20,7 @@ jobs:
             runs-on: ubuntu-latest
             steps:
               - name: download artifact
-                uses: actions/download-artifact@v3
+                uses: actions/download-artifact@v4
                 with:
                   name: dragon-text-file
         
