@@ -11,13 +11,13 @@ jobs:
           run: echo "docker login --username=${{vars.DOCKER_USERNAME}} --password=${{secrets.DOCKER_PASSWORD}}"
 
         - name: docker publish
-          run: echo "docker push ${{vars.CONTAINER_REGISTRY}}/${{vars.DOCKER_USERNAME}}/${{vars.IMAGE_NAME}}:latest"
+          run: echo "docker push ${{vars.IMAGE_NAME}}:latest"
           
     deploy_job:
         needs: docker
         runs-on: ubuntu-latest
         steps:
             - name: docker run
-              run: echo "docker run -d -p 8080:80 ${{vars.CONTAINER_REGISTRY}}/${{vars.DOCKER_USERNAME}}/${{vars.IMAGE_NAME}}:latest"
+              run: echo "docker run -d -p 8080:80 ${{vars.IMAGE_NAME}}:latest"
              
 
