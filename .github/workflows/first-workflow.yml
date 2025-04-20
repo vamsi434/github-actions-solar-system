@@ -6,8 +6,10 @@ jobs:
      steps:
         - name: checkout repo
           uses: actions/checkout@v4
-        - name: list all files in current directory
-          run: echo "list all files in current directory"
-        - name: linux command
-          run: ls -la
-
+        - name: List and Read files
+          run: |
+           echo "List all files"
+           ls -ltr
+           cat READEME.md
+        - name: use third party library
+          run: cowsay -f dragon "run for cover its a dragon" >> dragon.txt
