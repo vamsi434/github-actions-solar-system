@@ -1,12 +1,19 @@
-name: second-workflow
+name: generate ADSCII Artwork
 
 on: push
 
-jobs:
-    second-job:
-        runs-on: ubuntu-latest
-        steps:
-          - name: my second step
-            run: echo "my second step"
-          - name: second linux command
-            run: ls
+jobs: 
+    ascii-work:
+     runs-on: ubuntu-latest
+     steps:
+        - name: checkout repo
+          uses: actions/checkout@v4
+        - name: download coway package
+          run: sudo apt-get install coway -y
+        - name: list all files
+          run: ls -la
+        - name: create file
+          run:  cowsay -f dragon "run for cover its a dragon" >> dragon.txt
+        - name: print dragon.txt
+          run: cat dragon.txt
+          
