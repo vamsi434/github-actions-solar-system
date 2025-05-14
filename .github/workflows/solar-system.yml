@@ -59,5 +59,27 @@ jobs:
                with:
                  username: ${{ vars.DOCKER_USERNAME }} 
                  password: ${{ secrets.DOCKER_PASSWORD }}
+             - name: docker build for testing 
+               uses: docker/build-push-action@v4 
+               with: 
+                   context: .
+                   push: false 
+                   tags: ${{ vars.DOCKER_USERNAME }}/solar-system:${{github.sha}}
+
+             - name: docker image testing 
+               run: |
+                 docker images 
+                 docker run --name solar-system-app -d \
+                 -p 3000:3000 \
+                 -e MONGO_URI=$MONGO_USERNAME \
+                 -e MONGO_USERNAME=$MONGO_USERNAME
+                 -e MONGO_PASSWORD=$MONGO_PASSWORD \
+                 ${{ vars.DOCKER_USERNAME }}/solar-system:${{ github.sha }} 
+                 export IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' solar-system-app)
+                 echo $IP 
+
+                 echo testing Image URL using wget 
+                 wget -q -o 127.0.0.1:3000/live | grep live
+
 
        
