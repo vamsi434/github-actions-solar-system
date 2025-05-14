@@ -79,7 +79,7 @@ jobs:
                  echo $IP 
 
                  echo testing Image URL using wget 
-                 wget -q -o $IP:3000/live | grep live
+                 wget -q -o - $IP:3000/live | grep live
 
 
        
